@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 50, 0);
   self.proxy = [self.collectionView circularProxyWithDataSource:self delegate:self];
 }
 
@@ -31,14 +32,6 @@
      numberOfItemsInSection:(NSInteger)section
 {
   return self.imageNames.count;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout*)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-  CGFloat width = MIN(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)) - 50;
-  return CGSizeMake(width, width);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
