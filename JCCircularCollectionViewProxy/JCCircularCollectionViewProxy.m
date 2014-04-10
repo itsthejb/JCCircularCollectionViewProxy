@@ -7,7 +7,10 @@
 
 #import "JCCircularCollectionViewProxy.h"
 
+static const CGFloat kPagingRatio = 0.5;
+static const CGFloat kPagingConstant = 1.0;
 static const NSInteger kEndlessMultiplier = 7000;
+static const NSUInteger kFixedSection = 0;
 
 @interface JCCircularCollectionViewProxy ()
 @property (nonatomic, weak) id <JCCircularCollectionViewProxyDataSource> dataSource;
@@ -62,7 +65,7 @@ static const NSInteger kEndlessMultiplier = 7000;
   // scroll to centre
   dispatch_async(dispatch_get_main_queue(), ^{
     NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2;
-    [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
+    [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
                            atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
                                    animated:NO];
   });
@@ -78,7 +81,7 @@ static const NSInteger kEndlessMultiplier = 7000;
     // reset to beginning
     self.lastOffset = CGPointMake(self.itemWidthPlusSpacing *
                                   self.numberOfPaddingCells,
-                                  0);
+                                  scrollView.contentOffset.y);
     dispatch_async(dispatch_get_main_queue(), ^{
       scrollView.contentOffset = self.lastOffset;
     });
@@ -87,7 +90,7 @@ static const NSInteger kEndlessMultiplier = 7000;
     // reset to end
     self.lastOffset = CGPointMake(self.itemWidthPlusSpacing *
                                   (self.trueItemCount - self.numberOfPaddingCells),
-                                  0);
+                                  scrollView.contentOffset.y);
     dispatch_async(dispatch_get_main_queue(), ^{
       scrollView.contentOffset = self.lastOffset;
     });
@@ -102,11 +105,11 @@ static const NSInteger kEndlessMultiplier = 7000;
               targetContentOffset:(inout CGPoint *)targetContentOffset
 {
   NSUInteger item = scrollView.contentOffset.x / self.itemWidthPlusSpacing;
-  NSUInteger newItem = item + (velocity.x * 1.5) + 1;
-    UICollectionViewLayoutAttributes *attrs = [self.collectionView
+  NSUInteger newItem = item + (velocity.x * kPagingRatio) + kPagingConstant;
+  UICollectionViewLayoutAttributes *attrs = [self.collectionView
                                              layoutAttributesForItemAtIndexPath:
                                              [NSIndexPath indexPathForRow:newItem
-                                                                inSection:0]];
+                                                                inSection:kFixedSection]];
   CGPoint point = attrs.frame.origin;
   point.x -= self.flowLayout.sectionInset.left;
   *targetContentOffset = point;
@@ -140,7 +143,7 @@ static const NSInteger kEndlessMultiplier = 7000;
 }
 
 - (NSUInteger) trueItemCount {
-  return [self.dataSource collectionView:self.collectionView numberOfItemsInSection:0];
+  return [self.dataSource collectionView:self.collectionView numberOfItemsInSection:kFixedSection];
 }
 
 #pragma mark UICollectionViewDataSource
@@ -149,7 +152,7 @@ static const NSInteger kEndlessMultiplier = 7000;
   if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
     return [self.dataSource numberOfSectionsInCollectionView:collectionView];
   }
-  return 1;
+  return kFixedSection + 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -166,7 +169,7 @@ static const NSInteger kEndlessMultiplier = 7000;
   NSInteger itemIndex = indexPath.row % self.trueItemCount;
   [self.dataSource collectionView:self.collectionView
                     configureCell:cell
-                     forIndexPath:[NSIndexPath indexPathForRow:itemIndex inSection:0]];
+                     forIndexPath:[NSIndexPath indexPathForRow:itemIndex inSection:kFixedSection]];
   return cell;
 }
 
