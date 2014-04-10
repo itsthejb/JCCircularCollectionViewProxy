@@ -20,9 +20,10 @@
 		49AD883418F7299F007A23A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD881318F7299F007A23A0 /* Foundation.framework */; };
 		49AD883518F7299F007A23A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD881718F7299F007A23A0 /* UIKit.framework */; };
 		49AD883D18F7299F007A23A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AD883B18F7299F007A23A0 /* InfoPlist.strings */; };
-		49AD883F18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD883E18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m */; };
+		49AD883F18F7299F007A23A0 /* Specs.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD883E18F7299F007A23A0 /* Specs.m */; };
 		49AD884A18F729C2007A23A0 /* JCCircularCollectionViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD884918F729C2007A23A0 /* JCCircularCollectionViewProxy.m */; };
 		49AD885618F72A6D007A23A0 /* DemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD885518F72A6D007A23A0 /* DemoCell.m */; };
+		6276550BC9904F5188EAB05B /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C66FC3DA4C4FC9A015962D /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F43ADE1132E4F41836C5630 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = "<group>"; };
 		49AD881018F7299F007A23A0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD881318F7299F007A23A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49AD881518F7299F007A23A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -52,13 +54,17 @@
 		49AD882B18F7299F007A23A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Demo/Images.xcassets; sourceTree = "<group>"; };
 		49AD883118F7299F007A23A0 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD883218F7299F007A23A0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		49AD883A18F7299F007A23A0 /* JCCircularCollectionViewProxyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JCCircularCollectionViewProxyTests-Info.plist"; sourceTree = "<group>"; };
+		49AD883A18F7299F007A23A0 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		49AD883C18F7299F007A23A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		49AD883E18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCircularCollectionViewProxyTests.m; sourceTree = "<group>"; };
+		49AD883E18F7299F007A23A0 /* Specs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
 		49AD884818F729C2007A23A0 /* JCCircularCollectionViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCircularCollectionViewProxy.h; sourceTree = "<group>"; };
 		49AD884918F729C2007A23A0 /* JCCircularCollectionViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCircularCollectionViewProxy.m; sourceTree = "<group>"; };
 		49AD885418F72A6D007A23A0 /* DemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell.h; sourceTree = "<group>"; };
 		49AD885518F72A6D007A23A0 /* DemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell.m; sourceTree = "<group>"; };
+		49AD886818F72FF1007A23A0 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		49AD886A18F7309F007A23A0 /* JCCircularCollectionViewProxy.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = JCCircularCollectionViewProxy.podspec; sourceTree = "<group>"; };
+		49AD886B18F7309F007A23A0 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E1C66FC3DA4C4FC9A015962D /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 				49AD883318F7299F007A23A0 /* XCTest.framework in Frameworks */,
 				49AD883518F7299F007A23A0 /* UIKit.framework in Frameworks */,
 				49AD883418F7299F007A23A0 /* Foundation.framework in Frameworks */,
+				6276550BC9904F5188EAB05B /* libPods-Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +100,7 @@
 				49AD883818F7299F007A23A0 /* Tests */,
 				49AD881218F7299F007A23A0 /* Frameworks */,
 				49AD881118F7299F007A23A0 /* Products */,
+				49AD886918F7307D007A23A0 /* Cocoapods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +120,7 @@
 				49AD881518F7299F007A23A0 /* CoreGraphics.framework */,
 				49AD881718F7299F007A23A0 /* UIKit.framework */,
 				49AD883218F7299F007A23A0 /* XCTest.framework */,
+				E1C66FC3DA4C4FC9A015962D /* libPods-Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,17 +156,16 @@
 		49AD883818F7299F007A23A0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				49AD883E18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m */,
+				49AD883E18F7299F007A23A0 /* Specs.m */,
 				49AD883918F7299F007A23A0 /* Supporting Files */,
 			);
-			name = Tests;
-			path = JCCircularCollectionViewProxyTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		49AD883918F7299F007A23A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				49AD883A18F7299F007A23A0 /* JCCircularCollectionViewProxyTests-Info.plist */,
+				49AD883A18F7299F007A23A0 /* Tests-Info.plist */,
 				49AD883B18F7299F007A23A0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -171,6 +179,17 @@
 			);
 			name = JCCircularCollectionViewProxyDataSource;
 			path = JCCircularCollectionViewProxy;
+			sourceTree = "<group>";
+		};
+		49AD886918F7307D007A23A0 /* Cocoapods */ = {
+			isa = PBXGroup;
+			children = (
+				49AD886818F72FF1007A23A0 /* Podfile */,
+				3F43ADE1132E4F41836C5630 /* Pods-Tests.xcconfig */,
+				49AD886A18F7309F007A23A0 /* JCCircularCollectionViewProxy.podspec */,
+				49AD886B18F7309F007A23A0 /* LICENSE */,
+			);
+			name = Cocoapods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49AD884518F7299F007A23A0 /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
+				3E98405AC40240C28AB50151 /* Check Pods Manifest.lock */,
 				49AD882D18F7299F007A23A0 /* Sources */,
 				49AD882E18F7299F007A23A0 /* Frameworks */,
 				49AD882F18F7299F007A23A0 /* Resources */,
+				E4567FA358A5452DBD54725C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,6 +287,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E98405AC40240C28AB50151 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E4567FA358A5452DBD54725C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		49AD880C18F7299F007A23A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -283,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49AD883F18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m in Sources */,
+				49AD883F18F7299F007A23A0 /* Specs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -389,7 +443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -423,6 +477,7 @@
 		};
 		49AD884618F7299F007A23A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F43ADE1132E4F41836C5630 /* Pods-Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -431,12 +486,12 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JCCircularCollectionViewProxy/JCCircularCollectionViewProxy-Prefix.pch";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "JCCircularCollectionViewProxyTests/JCCircularCollectionViewProxyTests-Info.plist";
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -445,6 +500,7 @@
 		};
 		49AD884718F7299F007A23A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F43ADE1132E4F41836C5630 /* Pods-Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -453,8 +509,8 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JCCircularCollectionViewProxy/JCCircularCollectionViewProxy-Prefix.pch";
-				INFOPLIST_FILE = "JCCircularCollectionViewProxyTests/JCCircularCollectionViewProxyTests-Info.plist";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -480,6 +536,7 @@
 				49AD884418F7299F007A23A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49AD884518F7299F007A23A0 /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +545,7 @@
 				49AD884718F7299F007A23A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
