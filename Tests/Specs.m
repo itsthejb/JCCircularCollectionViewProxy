@@ -35,9 +35,36 @@ before(^{
 });
 
 describe(@"data source", ^{
-  it(@"should get number of items from true data source", ^{
+  before(^{
     [[[mockDataSource stub] andReturnValue:@99] collectionView:collectionView numberOfItemsInSection:0];
+  });
+
+  it(@"should return proxied count", ^{
     expect([proxy collectionView:collectionView numberOfItemsInSection:0]).to.equal(99 * 7000);
+  });
+
+  it(@"should dequeue cell from true data source and pass on cell for configuration", ^{
+    id obj = @"";
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3000 inSection:0];
+    [[[mockDataSource stub] andReturn:obj] collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    [[mockDataSource expect] collectionView:collectionView configureCell:obj
+                               forIndexPath:[OCMArg checkWithBlock:^BOOL(NSIndexPath *indexPath)
+    {
+      return [indexPath isEqual:[NSIndexPath indexPathForRow:30 inSection:0]];
+    }]];
+    [proxy collectionView:collectionView cellForItemAtIndexPath:indexPath];
+  });
+
+  it(@"should forward data source method", ^{
+    [[mockDataSource expect] collectionView:nil viewForSupplementaryElementOfKind:nil atIndexPath:nil];
+    [proxy collectionView:nil viewForSupplementaryElementOfKind:nil atIndexPath:nil];
+  });
+});
+
+describe(@"delegate", ^{
+  it(@"should forward delegate method", ^{
+    [[mockDelegate expect] collectionView:nil layout:nil referenceSizeForHeaderInSection:0];
+    [proxy collectionView:nil layout:nil referenceSizeForHeaderInSection:0];
   });
 });
 
