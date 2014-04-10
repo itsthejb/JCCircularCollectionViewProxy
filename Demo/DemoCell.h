@@ -1,5 +1,5 @@
 //
-//  JCViewController.h
+//  DemoCell.h
 //  JCCircularCollectionViewProxy
 //
 //  Created by Jonathan Crooke on 10/04/2014.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JCViewController : UIViewController
-
+@interface DemoCell : UICollectionViewCell
+@property (weak, nonatomic, readonly) IBOutlet UIImageView *imageView;
 @end

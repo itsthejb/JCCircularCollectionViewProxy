@@ -12,15 +12,17 @@
 		49AD881818F7299F007A23A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD881718F7299F007A23A0 /* UIKit.framework */; };
 		49AD881E18F7299F007A23A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AD881C18F7299F007A23A0 /* InfoPlist.strings */; };
 		49AD882018F7299F007A23A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD881F18F7299F007A23A0 /* main.m */; };
-		49AD882418F7299F007A23A0 /* JCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD882318F7299F007A23A0 /* JCAppDelegate.m */; };
+		49AD882418F7299F007A23A0 /* DemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD882318F7299F007A23A0 /* DemoAppDelegate.m */; };
 		49AD882718F7299F007A23A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD882518F7299F007A23A0 /* Main.storyboard */; };
-		49AD882A18F7299F007A23A0 /* JCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD882918F7299F007A23A0 /* JCViewController.m */; };
+		49AD882A18F7299F007A23A0 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD882918F7299F007A23A0 /* DemoViewController.m */; };
 		49AD882C18F7299F007A23A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AD882B18F7299F007A23A0 /* Images.xcassets */; };
 		49AD883318F7299F007A23A0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD883218F7299F007A23A0 /* XCTest.framework */; };
 		49AD883418F7299F007A23A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD881318F7299F007A23A0 /* Foundation.framework */; };
 		49AD883518F7299F007A23A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD881718F7299F007A23A0 /* UIKit.framework */; };
 		49AD883D18F7299F007A23A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AD883B18F7299F007A23A0 /* InfoPlist.strings */; };
 		49AD883F18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD883E18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m */; };
+		49AD884A18F729C2007A23A0 /* JCCircularCollectionViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD884918F729C2007A23A0 /* JCCircularCollectionViewProxy.m */; };
+		49AD885618F72A6D007A23A0 /* DemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AD885518F72A6D007A23A0 /* DemoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,25 +36,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		49AD881018F7299F007A23A0 /* JCCircularCollectionViewProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCCircularCollectionViewProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AD881018F7299F007A23A0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD881318F7299F007A23A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49AD881518F7299F007A23A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		49AD881718F7299F007A23A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		49AD881B18F7299F007A23A0 /* JCCircularCollectionViewProxy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JCCircularCollectionViewProxy-Info.plist"; sourceTree = "<group>"; };
+		49AD881B18F7299F007A23A0 /* Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; sourceTree = "<group>"; };
 		49AD881D18F7299F007A23A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49AD881F18F7299F007A23A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		49AD882118F7299F007A23A0 /* JCCircularCollectionViewProxy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCCircularCollectionViewProxy-Prefix.pch"; sourceTree = "<group>"; };
-		49AD882218F7299F007A23A0 /* JCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCAppDelegate.h; sourceTree = "<group>"; };
-		49AD882318F7299F007A23A0 /* JCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCAppDelegate.m; sourceTree = "<group>"; };
+		49AD882118F7299F007A23A0 /* Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Prefix.pch"; sourceTree = "<group>"; };
+		49AD882218F7299F007A23A0 /* DemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoAppDelegate.h; sourceTree = "<group>"; };
+		49AD882318F7299F007A23A0 /* DemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoAppDelegate.m; sourceTree = "<group>"; };
 		49AD882618F7299F007A23A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		49AD882818F7299F007A23A0 /* JCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCViewController.h; sourceTree = "<group>"; };
-		49AD882918F7299F007A23A0 /* JCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCViewController.m; sourceTree = "<group>"; };
-		49AD882B18F7299F007A23A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		49AD883118F7299F007A23A0 /* JCCircularCollectionViewProxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JCCircularCollectionViewProxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AD882818F7299F007A23A0 /* DemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		49AD882918F7299F007A23A0 /* DemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		49AD882B18F7299F007A23A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Demo/Images.xcassets; sourceTree = "<group>"; };
+		49AD883118F7299F007A23A0 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD883218F7299F007A23A0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		49AD883A18F7299F007A23A0 /* JCCircularCollectionViewProxyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JCCircularCollectionViewProxyTests-Info.plist"; sourceTree = "<group>"; };
 		49AD883C18F7299F007A23A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49AD883E18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCircularCollectionViewProxyTests.m; sourceTree = "<group>"; };
+		49AD884818F729C2007A23A0 /* JCCircularCollectionViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCircularCollectionViewProxy.h; sourceTree = "<group>"; };
+		49AD884918F729C2007A23A0 /* JCCircularCollectionViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCircularCollectionViewProxy.m; sourceTree = "<group>"; };
+		49AD885418F72A6D007A23A0 /* DemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell.h; sourceTree = "<group>"; };
+		49AD885518F72A6D007A23A0 /* DemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +88,9 @@
 		49AD880718F7299F007A23A0 = {
 			isa = PBXGroup;
 			children = (
-				49AD881918F7299F007A23A0 /* JCCircularCollectionViewProxy */,
-				49AD883818F7299F007A23A0 /* JCCircularCollectionViewProxyTests */,
+				49AD885718F72C84007A23A0 /* JCCircularCollectionViewProxyDataSource */,
+				49AD881918F7299F007A23A0 /* Demo */,
+				49AD883818F7299F007A23A0 /* Tests */,
 				49AD881218F7299F007A23A0 /* Frameworks */,
 				49AD881118F7299F007A23A0 /* Products */,
 			);
@@ -92,8 +99,8 @@
 		49AD881118F7299F007A23A0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49AD881018F7299F007A23A0 /* JCCircularCollectionViewProxy.app */,
-				49AD883118F7299F007A23A0 /* JCCircularCollectionViewProxyTests.xctest */,
+				49AD881018F7299F007A23A0 /* Demo.app */,
+				49AD883118F7299F007A23A0 /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,37 +116,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		49AD881918F7299F007A23A0 /* JCCircularCollectionViewProxy */ = {
+		49AD881918F7299F007A23A0 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				49AD882218F7299F007A23A0 /* JCAppDelegate.h */,
-				49AD882318F7299F007A23A0 /* JCAppDelegate.m */,
+				49AD882218F7299F007A23A0 /* DemoAppDelegate.h */,
+				49AD882318F7299F007A23A0 /* DemoAppDelegate.m */,
 				49AD882518F7299F007A23A0 /* Main.storyboard */,
-				49AD882818F7299F007A23A0 /* JCViewController.h */,
-				49AD882918F7299F007A23A0 /* JCViewController.m */,
+				49AD885418F72A6D007A23A0 /* DemoCell.h */,
+				49AD885518F72A6D007A23A0 /* DemoCell.m */,
+				49AD882818F7299F007A23A0 /* DemoViewController.h */,
+				49AD882918F7299F007A23A0 /* DemoViewController.m */,
 				49AD882B18F7299F007A23A0 /* Images.xcassets */,
 				49AD881A18F7299F007A23A0 /* Supporting Files */,
 			);
-			path = JCCircularCollectionViewProxy;
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		49AD881A18F7299F007A23A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				49AD881B18F7299F007A23A0 /* JCCircularCollectionViewProxy-Info.plist */,
+				49AD881B18F7299F007A23A0 /* Demo-Info.plist */,
 				49AD881C18F7299F007A23A0 /* InfoPlist.strings */,
 				49AD881F18F7299F007A23A0 /* main.m */,
-				49AD882118F7299F007A23A0 /* JCCircularCollectionViewProxy-Prefix.pch */,
+				49AD882118F7299F007A23A0 /* Demo-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = ../Demo;
 			sourceTree = "<group>";
 		};
-		49AD883818F7299F007A23A0 /* JCCircularCollectionViewProxyTests */ = {
+		49AD883818F7299F007A23A0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				49AD883E18F7299F007A23A0 /* JCCircularCollectionViewProxyTests.m */,
 				49AD883918F7299F007A23A0 /* Supporting Files */,
 			);
+			name = Tests;
 			path = JCCircularCollectionViewProxyTests;
 			sourceTree = "<group>";
 		};
@@ -152,12 +163,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		49AD885718F72C84007A23A0 /* JCCircularCollectionViewProxyDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				49AD884818F729C2007A23A0 /* JCCircularCollectionViewProxy.h */,
+				49AD884918F729C2007A23A0 /* JCCircularCollectionViewProxy.m */,
+			);
+			name = JCCircularCollectionViewProxyDataSource;
+			path = JCCircularCollectionViewProxy;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49AD880F18F7299F007A23A0 /* JCCircularCollectionViewProxy */ = {
+		49AD880F18F7299F007A23A0 /* Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49AD884218F7299F007A23A0 /* Build configuration list for PBXNativeTarget "JCCircularCollectionViewProxy" */;
+			buildConfigurationList = 49AD884218F7299F007A23A0 /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
 				49AD880C18F7299F007A23A0 /* Sources */,
 				49AD880D18F7299F007A23A0 /* Frameworks */,
@@ -167,14 +188,14 @@
 			);
 			dependencies = (
 			);
-			name = JCCircularCollectionViewProxy;
+			name = Demo;
 			productName = JCCircularCollectionViewProxy;
-			productReference = 49AD881018F7299F007A23A0 /* JCCircularCollectionViewProxy.app */;
+			productReference = 49AD881018F7299F007A23A0 /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		49AD883018F7299F007A23A0 /* JCCircularCollectionViewProxyTests */ = {
+		49AD883018F7299F007A23A0 /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49AD884518F7299F007A23A0 /* Build configuration list for PBXNativeTarget "JCCircularCollectionViewProxyTests" */;
+			buildConfigurationList = 49AD884518F7299F007A23A0 /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
 				49AD882D18F7299F007A23A0 /* Sources */,
 				49AD882E18F7299F007A23A0 /* Frameworks */,
@@ -185,9 +206,9 @@
 			dependencies = (
 				49AD883718F7299F007A23A0 /* PBXTargetDependency */,
 			);
-			name = JCCircularCollectionViewProxyTests;
+			name = Tests;
 			productName = JCCircularCollectionViewProxyTests;
-			productReference = 49AD883118F7299F007A23A0 /* JCCircularCollectionViewProxyTests.xctest */;
+			productReference = 49AD883118F7299F007A23A0 /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -218,8 +239,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49AD880F18F7299F007A23A0 /* JCCircularCollectionViewProxy */,
-				49AD883018F7299F007A23A0 /* JCCircularCollectionViewProxyTests */,
+				49AD880F18F7299F007A23A0 /* Demo */,
+				49AD883018F7299F007A23A0 /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,8 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AD882018F7299F007A23A0 /* main.m in Sources */,
-				49AD882A18F7299F007A23A0 /* JCViewController.m in Sources */,
-				49AD882418F7299F007A23A0 /* JCAppDelegate.m in Sources */,
+				49AD885618F72A6D007A23A0 /* DemoCell.m in Sources */,
+				49AD884A18F729C2007A23A0 /* JCCircularCollectionViewProxy.m in Sources */,
+				49AD882A18F7299F007A23A0 /* DemoViewController.m in Sources */,
+				49AD882418F7299F007A23A0 /* DemoAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +292,7 @@
 /* Begin PBXTargetDependency section */
 		49AD883718F7299F007A23A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 49AD880F18F7299F007A23A0 /* JCCircularCollectionViewProxy */;
+			target = 49AD880F18F7299F007A23A0 /* Demo */;
 			targetProxy = 49AD883618F7299F007A23A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -378,8 +401,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JCCircularCollectionViewProxy/JCCircularCollectionViewProxy-Prefix.pch";
-				INFOPLIST_FILE = "JCCircularCollectionViewProxy/JCCircularCollectionViewProxy-Info.plist";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -391,8 +414,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JCCircularCollectionViewProxy/JCCircularCollectionViewProxy-Prefix.pch";
-				INFOPLIST_FILE = "JCCircularCollectionViewProxy/JCCircularCollectionViewProxy-Info.plist";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -401,7 +424,7 @@
 		49AD884618F7299F007A23A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JCCircularCollectionViewProxy.app/JCCircularCollectionViewProxy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -423,7 +446,7 @@
 		49AD884718F7299F007A23A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JCCircularCollectionViewProxy.app/JCCircularCollectionViewProxy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -450,7 +473,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49AD884218F7299F007A23A0 /* Build configuration list for PBXNativeTarget "JCCircularCollectionViewProxy" */ = {
+		49AD884218F7299F007A23A0 /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49AD884318F7299F007A23A0 /* Debug */,
@@ -458,7 +481,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		49AD884518F7299F007A23A0 /* Build configuration list for PBXNativeTarget "JCCircularCollectionViewProxyTests" */ = {
+		49AD884518F7299F007A23A0 /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49AD884618F7299F007A23A0 /* Debug */,
