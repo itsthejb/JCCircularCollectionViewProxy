@@ -64,6 +64,7 @@
 		49AD886818F72FF1007A23A0 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		49AD886A18F7309F007A23A0 /* JCCircularCollectionViewProxy.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = JCCircularCollectionViewProxy.podspec; sourceTree = "<group>"; };
 		49AD886B18F7309F007A23A0 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		49E731FB18F73C15003A9BC0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E1C66FC3DA4C4FC9A015962D /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -101,6 +102,8 @@
 				49AD881218F7299F007A23A0 /* Frameworks */,
 				49AD881118F7299F007A23A0 /* Products */,
 				49AD886918F7307D007A23A0 /* Cocoapods */,
+				49AD886B18F7309F007A23A0 /* LICENSE */,
+				49E731FB18F73C15003A9BC0 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,7 +190,6 @@
 				49AD886818F72FF1007A23A0 /* Podfile */,
 				3F43ADE1132E4F41836C5630 /* Pods-Tests.xcconfig */,
 				49AD886A18F7309F007A23A0 /* JCCircularCollectionViewProxy.podspec */,
-				49AD886B18F7309F007A23A0 /* LICENSE */,
 			);
 			name = Cocoapods;
 			sourceTree = "<group>";
