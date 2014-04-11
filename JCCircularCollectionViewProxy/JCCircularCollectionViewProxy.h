@@ -64,8 +64,16 @@
 - (void) configureForCollectionView:(UICollectionView*) collectionView;
 
 /**
- *  I'm useless.
+ *  Calculate index into the "true" data source using a point in our
+ *  fake expanded collection view.
+ *
+ *  @param point Point in the coordinate system of the expanded collection view.
+ *
+ *  @return Index path into your "real" data source.
  */
+- (NSIndexPath *)indexPathForItemAtPoint:(CGPoint)point;
+
+/** I'm useless. */
 - (id)init __attribute__((deprecated("Use initWithDataSource:delegate:")));
 
 @end

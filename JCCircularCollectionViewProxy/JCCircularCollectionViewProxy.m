@@ -116,6 +116,14 @@ static const NSUInteger kFixedSection = 0;
   *targetContentOffset = point;
 }
 
+#pragma mark Wrapped properties
+
+- (NSIndexPath *)indexPathForItemAtPoint:(CGPoint)point {
+  // normalize the point into the bounds of the "true" data source
+  point.x = fmodf(point.x, self.trueItemCount * self.itemWidthPlusSpacing);
+  return [self.collectionView indexPathForItemAtPoint:point];
+}
+
 #pragma mark Calculated
 
 - (NSUInteger) numberOfPaddingCells { return self.numberOfVisibleWholeCells + 2; }
