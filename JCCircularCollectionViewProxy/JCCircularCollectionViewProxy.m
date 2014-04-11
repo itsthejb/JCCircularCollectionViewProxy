@@ -18,6 +18,7 @@ static const NSUInteger kFixedSection = 0;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, assign) CGPoint lastOffset;
 - (UICollectionViewFlowLayout*) flowLayout;
+- (NSIndexPath*) indexPathInTrueDataSourceForIndexPath:(NSIndexPath*) indexPath;
 - (NSUInteger) trueItemCount;
 - (NSUInteger) numberOfPaddingCells;
 - (CGFloat) itemWidth;
@@ -146,6 +147,11 @@ static const NSUInteger kFixedSection = 0;
   return [self.dataSource collectionView:self.collectionView numberOfItemsInSection:kFixedSection];
 }
 
+- (NSIndexPath*) indexPathInTrueDataSourceForIndexPath:(NSIndexPath*) indexPath {
+  NSInteger itemIndex = indexPath.row % self.trueItemCount;
+  return [NSIndexPath indexPathForRow:itemIndex inSection:kFixedSection];
+}
+
 #pragma mark UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -166,10 +172,9 @@ static const NSUInteger kFixedSection = 0;
 {
   UICollectionViewCell *cell = [self.dataSource collectionView:collectionView
                                         cellForItemAtIndexPath:indexPath];
-  NSInteger itemIndex = indexPath.row % self.trueItemCount;
   [self.dataSource collectionView:self.collectionView
                     configureCell:cell
-                     forIndexPath:[NSIndexPath indexPathForRow:itemIndex inSection:kFixedSection]];
+                     forIndexPath:[self indexPathInTrueDataSourceForIndexPath:indexPath]];
   return cell;
 }
 
