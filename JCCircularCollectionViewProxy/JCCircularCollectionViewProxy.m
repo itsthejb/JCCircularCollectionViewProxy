@@ -17,14 +17,17 @@ static const NSUInteger kFixedSection = 0;
 @property (nonatomic, weak) id <UICollectionViewDelegateFlowLayout> delegate;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, assign) CGPoint lastOffset;
-@property (nonatomic, assign, readwrite) NSUInteger currentPage;
+- (void) setCurrentPage:(NSUInteger)currentPage
+              andScroll:(BOOL) scroll;
 - (UICollectionViewFlowLayout*) flowLayout;
-- (NSIndexPath*) indexPathInTrueDataSourceForIndexPath:(NSIndexPath*) indexPath;
 - (NSUInteger) trueItemCount;
+- (NSUInteger) currentItemInExpandedSpace;
+- (NSUInteger) expandedSpaceIndexForTrueDataSourceIndex:(NSUInteger) index;
 - (NSUInteger) numberOfPaddingCells;
 - (CGFloat) itemWidth;
 - (CGFloat) itemWidthPlusSpacing;
 - (NSUInteger) numberOfVisibleWholeCells;
+- (CGSize) trueContentSize;
 @end
 
 #pragma mark -
@@ -76,8 +79,8 @@ static const NSUInteger kFixedSection = 0;
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  NSUInteger item = scrollView.contentOffset.x / self.itemWidthPlusSpacing;
-  self.currentPage = item % self.trueItemCount;
+  NSUInteger item = self.currentItemInExpandedSpace;
+  [self setCurrentPage:item % self.trueItemCount andScroll:NO];
 
   NSComparisonResult direction = [@(self.lastOffset.x) compare:@(scrollView.contentOffset.x)];
 
@@ -123,16 +126,62 @@ static const NSUInteger kFixedSection = 0;
 
 - (NSIndexPath *)indexPathForItemAtPoint:(CGPoint)point {
   // normalize the point into the bounds of the "true" data source
-  point.x = fmodf(point.x, self.trueItemCount * self.itemWidthPlusSpacing);
+  point.x = fmodf(point.x, self.trueContentSize.width);
   return [self.collectionView indexPathForItemAtPoint:point];
 }
 
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath
+               atScrollPosition:(UICollectionViewScrollPosition)scrollPosition
+                       animated:(BOOL)animated
+{
+  [self.collectionView scrollToItemAtIndexPath:
+   [NSIndexPath indexPathForRow:[self expandedSpaceIndexForTrueDataSourceIndex:indexPath.row]
+                      inSection:kFixedSection]
+                              atScrollPosition:scrollPosition
+                                      animated:animated];
+}
+
+- (void)setCurrentPage:(NSUInteger)currentPage {
+  [self setCurrentPage:currentPage andScroll:YES];
+}
+
+- (void) setCurrentPage:(NSUInteger)currentPage
+              andScroll:(BOOL) scroll
+{
+  [self willChangeValueForKey:@"currentPage"];
+  _currentPage = currentPage;
+  [self didChangeValueForKey:@"currentPage"];
+
+  if (scroll) {
+    [self.collectionView scrollToItemAtIndexPath:
+     [NSIndexPath indexPathForRow:[self expandedSpaceIndexForTrueDataSourceIndex:currentPage]
+                        inSection:kFixedSection]
+                                atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                        animated:YES];
+  }
+}
+
 #pragma mark Calculated
+
+- (NSUInteger) expandedSpaceIndexForTrueDataSourceIndex:(NSUInteger) index {
+  NSUInteger currentZone = self.currentItemInExpandedSpace / kEndlessMultiplier;
+  return (currentZone * kEndlessMultiplier) + index;
+}
+
+- (NSUInteger) currentItemInExpandedSpace {
+  return self.collectionView.contentOffset.x / self.itemWidthPlusSpacing;
+}
 
 - (NSUInteger) numberOfPaddingCells { return self.numberOfVisibleWholeCells + 2; }
 
 - (NSUInteger) numberOfVisibleWholeCells {
   return CGRectGetWidth(self.collectionView.frame) / self.itemWidthPlusSpacing;
+}
+
+- (CGSize) trueContentSize {
+  CGSize contentSize = self.collectionView.contentSize;
+  contentSize.width = self.trueItemCount * self.itemWidthPlusSpacing;
+  return contentSize;
 }
 
 - (CGFloat) itemWidth {

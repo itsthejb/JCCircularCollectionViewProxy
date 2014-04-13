@@ -39,10 +39,15 @@
     make.left.equalTo(self.view.mas_left);
     make.right.equalTo(self.view.mas_right);
     make.bottom.equalTo(self.view.mas_bottom);
-    make.height.equalTo(@20);
+    make.height.equalTo(@42);
   }];
   self.pageControl = pageControl;
   RAC(self.pageControl, currentPage) = RACObserve(self.proxy, currentPage);
+  [[self.pageControl rac_signalForControlEvents:UIControlEventValueChanged]
+   subscribeNext:^(UIPageControl *pageControl)
+  {
+    self.proxy.currentPage = pageControl.currentPage;
+  }];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView

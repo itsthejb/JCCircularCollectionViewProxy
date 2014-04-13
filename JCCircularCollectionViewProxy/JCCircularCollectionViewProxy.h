@@ -47,7 +47,7 @@
 /**
  *  The current *page* in the context of the true data source.
  */
-@property (nonatomic, assign, readonly) NSUInteger currentPage;
+@property (nonatomic, assign, readwrite) NSUInteger currentPage;
 
 /**
  *  Designated initialiser
@@ -69,6 +69,16 @@
 - (void) configureForCollectionView:(UICollectionView*) collectionView;
 
 /**
+ *  Convert the given "expanded space" index path to an index path valid
+ *  for the real data source.
+ *
+ *  @param indexPath An "expanded space" collection view index path
+ *
+ *  @return Index path in the context of the true data source
+ */
+- (NSIndexPath*) indexPathInTrueDataSourceForIndexPath:(NSIndexPath*) indexPath;
+
+/**
  *  Calculate index into the "true" data source using a point in our
  *  fake expanded collection view.
  *
@@ -77,6 +87,17 @@
  *  @return Index path into your "real" data source.
  */
 - (NSIndexPath *)indexPathForItemAtPoint:(CGPoint)point;
+
+/**
+ *  Proxy's the normal `UICollectionView` method.
+ *
+ *  @param indexPath      An index path in the context of the "true" data source
+ *  @param scrollPosition UICollectionViewScrollPosition
+ *  @param animated       Animate option
+ */
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath
+               atScrollPosition:(UICollectionViewScrollPosition)scrollPosition
+                       animated:(BOOL)animated;
 
 /** I'm useless. */
 - (id)init __attribute__((deprecated("Use initWithDataSource:delegate:")));
