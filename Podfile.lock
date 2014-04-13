@@ -1,16 +1,27 @@
 PODS:
   - Expecta (0.3.0)
+  - Masonry (0.4.0)
   - OCMock (2.2.4)
+  - ReactiveCocoa (2.3):
+    - ReactiveCocoa/Core
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/Core (2.3):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3)
   - Specta (0.2.1)
 
 DEPENDENCIES:
   - Expecta
+  - Masonry
   - OCMock
+  - ReactiveCocoa
   - Specta
 
 SPEC CHECKSUMS:
   Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
+  Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
   OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
+  ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
 
 COCOAPODS: 0.31.1
