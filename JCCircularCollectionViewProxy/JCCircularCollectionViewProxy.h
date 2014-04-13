@@ -45,6 +45,11 @@
   <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 /**
+ *  The current *page* in the context of the true data source.
+ */
+@property (nonatomic, assign, readonly) NSUInteger currentPage;
+
+/**
  *  Designated initialiser
  *
  *  @param dataSource Object that conforms to the proxy data source

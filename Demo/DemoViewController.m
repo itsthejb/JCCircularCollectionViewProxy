@@ -9,9 +9,12 @@
 #import "DemoViewController.h"
 #import "JCCircularCollectionViewProxy.h"
 #import "DemoCell.h"
+#import "Masonry.h"
+#import "ReactiveCocoa.h"
 
 @interface DemoViewController () <UICollectionViewDelegateFlowLayout, JCCircularCollectionViewProxyDataSource>
 @property (nonatomic, strong) JCCircularCollectionViewProxy *proxy;
+@property (nonatomic, weak) UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray *imageNames;
 @end
 
@@ -24,8 +27,22 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
   self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 50, 0);
   self.proxy = [self.collectionView circularProxyWithDataSource:self delegate:self];
+
+  UIPageControl *pageControl = [[UIPageControl alloc] init];
+  pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+  pageControl.numberOfPages = self.imageNames.count;
+  [self.view addSubview:pageControl];
+  [pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.equalTo(self.view.mas_left);
+    make.right.equalTo(self.view.mas_right);
+    make.bottom.equalTo(self.view.mas_bottom);
+    make.height.equalTo(@20);
+  }];
+  self.pageControl = pageControl;
+  RAC(self.pageControl, currentPage) = RACObserve(self.proxy, currentPage);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView

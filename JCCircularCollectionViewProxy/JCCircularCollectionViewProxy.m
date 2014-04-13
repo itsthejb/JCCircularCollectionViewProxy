@@ -17,6 +17,7 @@ static const NSUInteger kFixedSection = 0;
 @property (nonatomic, weak) id <UICollectionViewDelegateFlowLayout> delegate;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, assign) CGPoint lastOffset;
+@property (nonatomic, assign, readwrite) NSUInteger currentPage;
 - (UICollectionViewFlowLayout*) flowLayout;
 - (NSIndexPath*) indexPathInTrueDataSourceForIndexPath:(NSIndexPath*) indexPath;
 - (NSUInteger) trueItemCount;
@@ -76,6 +77,8 @@ static const NSUInteger kFixedSection = 0;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   NSUInteger item = scrollView.contentOffset.x / self.itemWidthPlusSpacing;
+  self.currentPage = item % self.trueItemCount;
+
   NSComparisonResult direction = [@(self.lastOffset.x) compare:@(scrollView.contentOffset.x)];
 
   if (item == self.trueItemCount - self.numberOfPaddingCells && direction == NSOrderedAscending) {
