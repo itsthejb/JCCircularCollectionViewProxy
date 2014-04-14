@@ -68,6 +68,8 @@
  */
 - (void) configureForCollectionView:(UICollectionView*) collectionView;
 
+- (void) reloadData;
+
 /**
  *  Convert the given "expanded space" index path to an index path valid
  *  for the real data source.

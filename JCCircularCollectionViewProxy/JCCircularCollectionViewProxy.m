@@ -60,20 +60,29 @@ static const NSUInteger kFixedSection = 0;
   self.collectionView.showsHorizontalScrollIndicator = NO;
   self.collectionView.showsVerticalScrollIndicator = NO;
   self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-
-  // layout config
-  CGFloat sidePadding = (CGRectGetWidth(self.collectionView.frame) -
-                         (self.numberOfVisibleWholeCells * self.itemWidth)) / 2;
-  self.flowLayout.sectionInset = UIEdgeInsetsMake(0, sidePadding, 0, sidePadding);
   self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
-  // scroll to centre
-  dispatch_async(dispatch_get_main_queue(), ^{
-    NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2;
-    [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
-                           atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-                                   animated:NO];
-  });
+  [self reloadData];
+}
+
+- (void)reloadData {
+  if (!CGSizeEqualToSize(self.collectionView.frame.size, CGSizeZero)) {
+    [self.collectionView reloadData];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+      if (self.trueItemCount) {
+        // layout config
+        CGFloat sidePadding = (CGRectGetWidth(self.collectionView.frame) -
+                               (self.numberOfVisibleWholeCells * self.itemWidth)) / 2;
+        self.flowLayout.sectionInset = UIEdgeInsetsMake(0, sidePadding, 0, sidePadding);
+        // scroll to middle
+        NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2;
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
+                                    atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                            animated:NO];
+      }
+    });
+  }
 }
 
 #pragma mark UIScrollViewDelegate
