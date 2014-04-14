@@ -100,7 +100,7 @@
                        animated:(BOOL)animated;
 
 /** I'm useless. */
-- (id)init __attribute__((deprecated("Use initWithDataSource:delegate:")));
+- (id)init __attribute__((deprecated("Use +proxyWithDataSource:delegate:")));
 
 @end
 
