@@ -169,7 +169,8 @@ static const NSUInteger kFixedSection = 0;
 }
 
 - (NSUInteger) currentItemInExpandedSpace {
-  return self.collectionView.contentOffset.x / self.itemWidthPlusSpacing;
+  return ((self.collectionView.contentOffset.x + (self.itemWidthPlusSpacing / 2)) /
+          self.itemWidthPlusSpacing);
 }
 
 - (NSUInteger) numberOfPaddingCells { return self.numberOfVisibleWholeCells + 2; }
