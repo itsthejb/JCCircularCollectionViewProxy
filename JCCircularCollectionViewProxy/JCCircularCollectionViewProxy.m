@@ -248,6 +248,17 @@ static const NSUInteger kFixedSection = 0;
   return cell;
 }
 
+#pragma mark UICollectionViewDelegate
+
+- (void)    collectionView:(UICollectionView *)collectionView
+  didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  if ([self.delegate respondsToSelector:_cmd]) {
+    [self.delegate collectionView:collectionView
+         didSelectItemAtIndexPath:[self indexPathInTrueDataSourceForIndexPath:indexPath]];
+  }
+}
+
 #pragma mark Delegate / data source message forwarding
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
