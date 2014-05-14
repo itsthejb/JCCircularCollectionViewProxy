@@ -45,7 +45,9 @@ static const NSUInteger kFixedSection = 0;
   return proxy;
 }
 
-- (void) configureForCollectionView:(UICollectionView*) collectionView {
+- (void) configureForCollectionView:(UICollectionView*) collectionView
+                         completion:(dispatch_block_t) completion
+{
   NSAssert(self.dataSource, @"No data source provided");
   NSAssert(!CGSizeEqualToSize(collectionView.frame.size, CGSizeZero),
            @"Collection view must be laid-out already");
@@ -62,10 +64,10 @@ static const NSUInteger kFixedSection = 0;
   self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
   self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
-  [self reloadData];
+  [self reloadDataWithCompletion:completion];
 }
 
-- (void)reloadData {
+- (void) reloadDataWithCompletion:(dispatch_block_t) completion {
   if (!CGSizeEqualToSize(self.collectionView.frame.size, CGSizeZero)) {
     [self.collectionView reloadData];
 
@@ -80,6 +82,9 @@ static const NSUInteger kFixedSection = 0;
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
                                     atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
                                             animated:NO];
+
+        //
+        completion ? completion() : nil;
       }
     });
   }
@@ -302,7 +307,7 @@ static const NSUInteger kFixedSection = 0;
 {
   JCCircularCollectionViewProxy *proxy = [JCCircularCollectionViewProxy proxyWithDataSource:dataSource
                                                                                    delegate:delegate];
-  [proxy configureForCollectionView:self];
+  [proxy configureForCollectionView:self completion:nil];
   return proxy;
 }
 @end

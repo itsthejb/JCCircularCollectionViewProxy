@@ -65,10 +65,17 @@
  *  and laid-out.
  *
  *  @param collectionView The collection view to use.
+ *  @param completion     Completion, executed after all set up
  */
-- (void) configureForCollectionView:(UICollectionView*) collectionView;
+- (void) configureForCollectionView:(UICollectionView*) collectionView
+                         completion:(dispatch_block_t) completion;
 
-- (void) reloadData;
+/**
+ *  Reload the collection view's data only
+ *
+ *  @param completion     Completion, executed after all set up
+ */
+- (void) reloadDataWithCompletion:(dispatch_block_t) completion;
 
 /**
  *  Convert the given "expanded space" index path to an index path valid
