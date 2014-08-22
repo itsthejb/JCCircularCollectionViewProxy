@@ -67,23 +67,32 @@ static const NSUInteger kFixedSection = 0;
   [self reloadDataWithCompletion:completion];
 }
 
-- (void) reloadDataWithCompletion:(dispatch_block_t) completion {
+- (void) reloadDataWithCompletion:(dispatch_block_t) completion
+                         animated:(BOOL) animated
+{
   if (!CGSizeEqualToSize(self.collectionView.frame.size, CGSizeZero)) {
-    [self.collectionView reloadData];
+    void(^reloadBlock)(void) = ^{ [self.collectionView reloadData]; };
+    animated ? reloadBlock() : [UIView performWithoutAnimation:reloadBlock];
 
     dispatch_async(dispatch_get_main_queue(), ^{
       if (self.trueItemCount) {
-        // layout config
-        CGFloat sidePadding = (CGRectGetWidth(self.collectionView.frame) -
-                               (self.numberOfVisibleWholeCells * self.itemWidth)) / 2;
-        self.flowLayout.sectionInset = UIEdgeInsetsMake(0, sidePadding, 0, sidePadding);
-        // scroll to middle
-        NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2;
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
-                                    atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-                                            animated:NO];
 
-        //
+        void(^block)(void) = ^{
+          // layout config
+          CGFloat sidePadding = (CGRectGetWidth(self.collectionView.frame) -
+                                 (self.numberOfVisibleWholeCells * self.itemWidth)) / 2;
+          self.flowLayout.sectionInset = UIEdgeInsetsMake(0, sidePadding, 0, sidePadding);
+          // scroll to middle
+          NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2;
+          [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
+                                      atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                              animated:NO];
+        };
+
+        animated ? block() : [UIView performWithoutAnimation:block];
+
+        completion ? completion() : nil;
+      } else {
         completion ? completion() : nil;
       }
     });

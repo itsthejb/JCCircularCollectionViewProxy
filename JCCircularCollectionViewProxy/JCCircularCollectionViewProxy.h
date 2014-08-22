@@ -74,8 +74,10 @@
  *  Reload the collection view's data only
  *
  *  @param completion     Completion, executed after all set up
+ *  @param Animated       Perform animated?
  */
-- (void) reloadDataWithCompletion:(dispatch_block_t) completion;
+- (void) reloadDataWithCompletion:(dispatch_block_t) completion
+                         animated:(BOOL) animated;
 
 /**
  *  Convert the given "expanded space" index path to an index path valid
