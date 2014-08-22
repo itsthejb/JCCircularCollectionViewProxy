@@ -66,8 +66,10 @@
  *
  *  @param collectionView The collection view to use.
  *  @param completion     Completion, executed after all set up
+ *  @param Animated       Perform animated?
  */
 - (void) configureForCollectionView:(UICollectionView*) collectionView
+                           animated:(BOOL) animated
                          completion:(dispatch_block_t) completion;
 
 /**
@@ -124,9 +126,11 @@
  *
  *  @param dataSource Data source
  *  @param delegate   Optional delegate
+ *  @param animated       Animate option
  *
  *  @return Instantiated proxy - store in a `strong` property!
  */
 - (JCCircularCollectionViewProxy*) circularProxyWithDataSource:(id <JCCircularCollectionViewProxyDataSource>) dataSource
-                                                      delegate:(id <UICollectionViewDelegateFlowLayout>)delegate;
+                                                      delegate:(id <UICollectionViewDelegateFlowLayout>)delegate
+                                                      animated:(BOOL)animated;
 @end

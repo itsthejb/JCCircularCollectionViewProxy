@@ -46,6 +46,7 @@ static const NSUInteger kFixedSection = 0;
 }
 
 - (void) configureForCollectionView:(UICollectionView*) collectionView
+                           animated:(BOOL) animated
                          completion:(dispatch_block_t) completion
 {
   NSAssert(self.dataSource, @"No data source provided");
@@ -64,7 +65,7 @@ static const NSUInteger kFixedSection = 0;
   self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
   self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
-  [self reloadDataWithCompletion:completion];
+  [self reloadDataWithCompletion:completion animated:animated];
 }
 
 - (void) reloadDataWithCompletion:(dispatch_block_t) completion
@@ -313,10 +314,11 @@ static const NSUInteger kFixedSection = 0;
 @implementation UICollectionView (CircularProxy)
 - (JCCircularCollectionViewProxy*) circularProxyWithDataSource:(id <JCCircularCollectionViewProxyDataSource>) dataSource
                                                       delegate:(id <UICollectionViewDelegateFlowLayout>)delegate
+                                                      animated:(BOOL)animated
 {
   JCCircularCollectionViewProxy *proxy = [JCCircularCollectionViewProxy proxyWithDataSource:dataSource
                                                                                    delegate:delegate];
-  [proxy configureForCollectionView:self completion:nil];
+  [proxy configureForCollectionView:self animated:animated completion:nil];
   return proxy;
 }
 @end
