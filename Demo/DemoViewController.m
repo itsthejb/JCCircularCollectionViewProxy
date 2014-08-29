@@ -32,7 +32,7 @@
   [super viewDidLoad];
 
   self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 50, 0);
-  self.proxy = [self.collectionView circularProxyWithDataSource:self delegate:self animated:NO];
+  self.proxy = [self.collectionView circularProxyWithDataSource:self delegate:self];
 
   UIPageControl *pageControl = [[UIPageControl alloc] init];
   pageControl.translatesAutoresizingMaskIntoConstraints = NO;

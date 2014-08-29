@@ -45,8 +45,6 @@ static const NSUInteger kFixedSection = 0;
 }
 
 - (void) configureForCollectionView:(UICollectionView*) collectionView
-                           animated:(BOOL) animated
-                         completion:(dispatch_block_t) completion
 {
   NSAssert(self.dataSource, @"No data source provided");
   NSAssert(!CGSizeEqualToSize(collectionView.frame.size, CGSizeZero),
@@ -63,34 +61,24 @@ static const NSUInteger kFixedSection = 0;
   self.collectionView.showsVerticalScrollIndicator = NO;
   self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
   self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-
-  [self reloadDataWithCompletion:completion animated:animated];
 }
 
 - (void) reloadDataWithCompletion:(dispatch_block_t) completion
-                         animated:(BOOL) animated
 {
   if (!CGSizeEqualToSize(self.collectionView.frame.size, CGSizeZero)) {
-    void(^reloadBlock)(void) = ^{ [self.collectionView reloadData]; };
-    animated ? reloadBlock() : [UIView performWithoutAnimation:reloadBlock];
+    [self.collectionView reloadData];
 
     dispatch_async(dispatch_get_main_queue(), ^{
       if (self.trueItemCount) {
-
-        void(^block)(void) = ^{
-          // layout config
-          CGFloat sidePadding = (CGRectGetWidth(self.collectionView.frame) -
-                                 (self.numberOfVisibleWholeCells * self.itemWidth)) / 2;
-          self.flowLayout.sectionInset = UIEdgeInsetsMake(0, sidePadding, 0, sidePadding);
-          // scroll to middle
-          NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2;
-          [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
-                                      atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-                                              animated:NO];
-        };
-
-        animated ? block() : [UIView performWithoutAnimation:block];
-
+        // layout config
+        CGFloat sidePadding = (CGRectGetWidth(self.collectionView.frame) -
+                               (self.numberOfVisibleWholeCells * self.itemWidth)) / 2;
+        self.flowLayout.sectionInset = UIEdgeInsetsMake(0, sidePadding, 0, sidePadding);
+        // scroll to middle
+        NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2 + self.currentPage;
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
+                                    atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                            animated:NO];
         completion ? completion() : nil;
       } else {
         completion ? completion() : nil;
@@ -319,11 +307,10 @@ static const NSUInteger kFixedSection = 0;
 @implementation UICollectionView (CircularProxy)
 - (JCCircularCollectionViewProxy*) circularProxyWithDataSource:(id <JCCircularCollectionViewProxyDataSource>) dataSource
                                                       delegate:(id <UICollectionViewDelegateFlowLayout>)delegate
-                                                      animated:(BOOL)animated
 {
   JCCircularCollectionViewProxy *proxy = [JCCircularCollectionViewProxy proxyWithDataSource:dataSource
                                                                                    delegate:delegate];
-  [proxy configureForCollectionView:self animated:animated completion:nil];
+  [proxy configureForCollectionView:self];
   return proxy;
 }
 @end
