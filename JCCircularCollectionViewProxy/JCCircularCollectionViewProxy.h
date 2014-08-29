@@ -50,6 +50,15 @@
 @property (nonatomic, assign, readwrite) NSUInteger currentPage;
 
 /**
+ *  Change the current page
+ *
+ *  @param currentPage New current page
+ *  @param animated    `YES` to scroll animated
+ */
+- (void) setCurrentPage:(NSUInteger)currentPage
+               animated:(BOOL) animated;
+
+/**
  *  Designated initialiser
  *
  *  @param dataSource Object that conforms to the proxy data source

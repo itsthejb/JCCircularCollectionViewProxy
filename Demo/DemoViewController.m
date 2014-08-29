@@ -16,6 +16,9 @@
 @property (nonatomic, strong) JCCircularCollectionViewProxy *proxy;
 @property (nonatomic, weak) UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray *imageNames;
+- (IBAction)randomPagePressed:(id)sender;
+- (IBAction)jumpPressed:(id)sender;
+- (NSUInteger) randomPage;
 @end
 
 @implementation DemoViewController
@@ -73,6 +76,23 @@
           forIndexPath:(NSIndexPath *)indexPath
 {
   cell.imageView.image = [UIImage imageNamed:self.imageNames[indexPath.row]];
+}
+
+- (NSUInteger) randomPage {
+  NSUInteger newPage = self.proxy.currentPage;
+  while (newPage == self.proxy.currentPage) {
+    newPage = arc4random() % self.imageNames.count;
+  }
+  return newPage;
+}
+
+- (IBAction)randomPagePressed:(id)sender {
+  self.proxy.currentPage = self.randomPage;
+//  [self.proxy setCurrentPage:self.randomPage animated:YES];
+}
+
+- (IBAction)jumpPressed:(id)sender {
+  [self.proxy setCurrentPage:self.randomPage animated:NO];
 }
 
 @end
