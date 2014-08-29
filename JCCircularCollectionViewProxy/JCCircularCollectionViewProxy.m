@@ -307,7 +307,6 @@ static const NSUInteger kFixedSection = 0;
 @implementation UICollectionView (CircularProxy)
 - (JCCircularCollectionViewProxy*) circularProxyWithDataSource:(id <JCCircularCollectionViewProxyDataSource>) dataSource
                                                       delegate:(id <UICollectionViewDelegateFlowLayout>)delegate
-                                                      animated:(BOOL)animated
 {
   JCCircularCollectionViewProxy *proxy = [JCCircularCollectionViewProxy proxyWithDataSource:dataSource
                                                                                    delegate:delegate];
