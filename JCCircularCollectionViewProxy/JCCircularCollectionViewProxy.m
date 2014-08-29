@@ -83,7 +83,7 @@ static const NSUInteger kFixedSection = 0;
                                  (self.numberOfVisibleWholeCells * self.itemWidth)) / 2;
           self.flowLayout.sectionInset = UIEdgeInsetsMake(0, sidePadding, 0, sidePadding);
           // scroll to middle
-          NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2;
+          NSUInteger index = self.trueItemCount * kEndlessMultiplier / 2 + self.currentPage;
           [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:kFixedSection]
                                       atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
                                               animated:NO];
