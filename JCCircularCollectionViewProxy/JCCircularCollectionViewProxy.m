@@ -103,7 +103,15 @@ static const NSUInteger kFixedSection = 0;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   NSUInteger item = self.currentItemInExpandedSpace;
-  [self setCurrentPage:item % self.trueItemCount animated:NO];
+
+  if (scrollView.isDragging) {
+    NSUInteger page = item % self.trueItemCount;
+    if (page != self.currentPage) {
+      [self willChangeValueForKey:@"currentPage"];
+      _currentPage = page;
+      [self didChangeValueForKey:@"currentPage"];
+    }
+  }
 
   NSComparisonResult direction = [@(self.lastOffset.x) compare:@(scrollView.contentOffset.x)];
 
@@ -171,19 +179,15 @@ static const NSUInteger kFixedSection = 0;
 - (void) setCurrentPage:(NSUInteger)currentPage
                animated:(BOOL) animated
 {
+  NSParameterAssert(currentPage < self.trueItemCount);
+
   [self willChangeValueForKey:@"currentPage"];
   _currentPage = currentPage;
   [self didChangeValueForKey:@"currentPage"];
 
-  if (animated) {
-    [self.collectionView scrollToItemAtIndexPath:
-     [NSIndexPath indexPathForRow:[self expandedSpaceIndexForTrueDataSourceIndex:currentPage]
-                        inSection:kFixedSection]
-                                atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-                                        animated:YES];
-  } else {
-    
-  }
+  [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage inSection:kFixedSection]
+               atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                       animated:animated];
 }
 
 #pragma mark Calculated
