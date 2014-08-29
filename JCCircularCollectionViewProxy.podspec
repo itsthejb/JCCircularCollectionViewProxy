@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "JCCircularCollectionViewProxy"
-  s.version       = "0.0.1"
+  s.version       = "0.0.2"
   s.summary       = "Quasi-infinite scrolling circular UICollectionView."
   s.description   = "Create a padded, infinite scrolling UICollectionViewFlowLayout with very little code."
   s.homepage      = "https://github.com/itsthejb/JCCircularCollectionViewProxy"
