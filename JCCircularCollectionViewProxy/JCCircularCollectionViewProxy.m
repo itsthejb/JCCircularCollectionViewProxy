@@ -17,8 +17,7 @@ static const NSUInteger kFixedSection = 0;
 @property (nonatomic, weak) id <UICollectionViewDelegateFlowLayout> delegate;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, assign) CGPoint lastOffset;
-- (void) setCurrentPage:(NSUInteger)currentPage
-              andScroll:(BOOL) scroll;
+- (void) setCurrentPage:(NSUInteger)currentPage animated:(BOOL) animated;
 - (UICollectionViewFlowLayout*) flowLayout;
 - (NSUInteger) trueItemCount;
 - (NSUInteger) currentItemInExpandedSpace;
@@ -104,7 +103,15 @@ static const NSUInteger kFixedSection = 0;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   NSUInteger item = self.currentItemInExpandedSpace;
-  [self setCurrentPage:item % self.trueItemCount andScroll:NO];
+
+  if (scrollView.isDragging) {
+    NSUInteger page = item % self.trueItemCount;
+    if (page != self.currentPage) {
+      [self willChangeValueForKey:@"currentPage"];
+      _currentPage = page;
+      [self didChangeValueForKey:@"currentPage"];
+    }
+  }
 
   NSComparisonResult direction = [@(self.lastOffset.x) compare:@(scrollView.contentOffset.x)];
 
@@ -166,23 +173,21 @@ static const NSUInteger kFixedSection = 0;
 }
 
 - (void)setCurrentPage:(NSUInteger)currentPage {
-  [self setCurrentPage:currentPage andScroll:YES];
+  [self setCurrentPage:currentPage animated:YES];
 }
 
 - (void) setCurrentPage:(NSUInteger)currentPage
-              andScroll:(BOOL) scroll
+               animated:(BOOL) animated
 {
+  NSParameterAssert(currentPage < self.trueItemCount);
+
   [self willChangeValueForKey:@"currentPage"];
   _currentPage = currentPage;
   [self didChangeValueForKey:@"currentPage"];
 
-  if (scroll) {
-    [self.collectionView scrollToItemAtIndexPath:
-     [NSIndexPath indexPathForRow:[self expandedSpaceIndexForTrueDataSourceIndex:currentPage]
-                        inSection:kFixedSection]
-                                atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-                                        animated:YES];
-  }
+  [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage inSection:kFixedSection]
+               atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                       animated:animated];
 }
 
 #pragma mark Calculated

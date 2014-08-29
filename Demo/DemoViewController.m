@@ -16,20 +16,23 @@
 @property (nonatomic, strong) JCCircularCollectionViewProxy *proxy;
 @property (nonatomic, weak) UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray *imageNames;
+- (IBAction)randomPagePressed:(id)sender;
+- (IBAction)jumpPressed:(id)sender;
+- (NSUInteger) randomPage;
 @end
 
 @implementation DemoViewController
 
 - (void)awakeFromNib {
   [super awakeFromNib];
-  self.imageNames = @[@"flower1.jpg", @"flower2.jpg", @"flower3.jpg", @"flower4.jpg"];
+  self.imageNames = @[@"flower1", @"flower2", @"flower3", @"flower4"];
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
 
   self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 50, 0);
-  self.proxy = [self.collectionView circularProxyWithDataSource:self delegate:self];
+  self.proxy = [self.collectionView circularProxyWithDataSource:self delegate:self animated:NO];
 
   UIPageControl *pageControl = [[UIPageControl alloc] init];
   pageControl.translatesAutoresizingMaskIntoConstraints = NO;
@@ -73,6 +76,23 @@
           forIndexPath:(NSIndexPath *)indexPath
 {
   cell.imageView.image = [UIImage imageNamed:self.imageNames[indexPath.row]];
+}
+
+- (NSUInteger) randomPage {
+  NSUInteger newPage = self.proxy.currentPage;
+  while (newPage == self.proxy.currentPage) {
+    newPage = arc4random() % self.imageNames.count;
+  }
+  return newPage;
+}
+
+- (IBAction)randomPagePressed:(id)sender {
+  self.proxy.currentPage = self.randomPage;
+//  [self.proxy setCurrentPage:self.randomPage animated:YES];
+}
+
+- (IBAction)jumpPressed:(id)sender {
+  [self.proxy setCurrentPage:self.randomPage animated:NO];
 }
 
 @end
