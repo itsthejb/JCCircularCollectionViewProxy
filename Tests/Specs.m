@@ -31,8 +31,7 @@ before(^{
    layout:collectionView.collectionViewLayout
    sizeForItemAtIndexPath:[OCMArg any]];
   proxy = [collectionView circularProxyWithDataSource:mockDataSource
-                                             delegate:mockDelegate
-                                             animated:NO];
+                                             delegate:mockDelegate];
 });
 
 describe(@"data source", ^{
