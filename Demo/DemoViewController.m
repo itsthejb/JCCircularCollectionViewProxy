@@ -22,7 +22,7 @@
 
 - (void)awakeFromNib {
   [super awakeFromNib];
-  self.imageNames = @[@"flower1.jpg", @"flower2.jpg", @"flower3.jpg", @"flower4.jpg"];
+  self.imageNames = @[@"flower1", @"flower2", @"flower3", @"flower4"];
 }
 
 - (void)viewDidLoad {
